@@ -1,0 +1,239 @@
+    1  apt-get update ; apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common -y 
+    2  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    3  add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    4     $(lsb_release -cs) \
+    5     stable"
+    6  apt-get update; apt-get install docker-ce docker-ce-cli containerd.io -y 
+    7  history 
+    8  docker version 
+    9  history 
+   10  docker version 
+   11  docker images 
+   12  docker ps 
+   13  docker ps -a
+   14  docker run busybox echo "Hello World"
+   15  docker images 
+   16  docker ps 
+   17  docker ps -a
+   18  history 
+   19  docker run busybox echo "Hello World -2"
+   20  docker ps 
+   21  docker ps -a
+   22  docker pull ubuntu:16.04
+   23  docker images 
+   24  docker run  centos/7 ps -ef 
+   25  docker search centos
+   26  docker run  centos ps -ef 
+   27  docker images 
+   28  docker ps 
+   29  docker ps -a
+   30  history 
+   31  docker ps -a
+   32  docker ps 
+   33  docker ps -a
+   34  docker run -itd ubuntu /bin/bash
+   35  docker images 
+   36  docker ps 
+   37  docker run -it ubuntu /bin/bash
+   38  docker ps 
+   39  docker run -it ubuntu /bin/bash
+   40  docker ps 
+   41  docker ps -a
+   42  docker ps 
+   43  docker ps -a
+   44  docker start cb96e644851c
+   45  docker ps 
+   46  docker attach cb96e644851c
+   47  docker ps 
+   48  history 
+   49  docker ps 
+   50  docker kill acf51dd69ff1
+   51  docker ps 
+   52  docker start acf51dd69ff1
+   53  docker ps 
+   54  history 
+   55  docker ps -a 
+   56  docker ps -aq 
+   57  docker kill $(docker ps -aq) 
+   58  docker ps -a
+   59  docker ps 
+   60  docker ps -aq
+   61  docker rm $(docker ps -aq)
+   62  docker ps -a 
+   63  ls
+   64  docker run -itd ubuntu /bin/bash
+   65  docker ps -a 
+   66  docker run --name appA-Cont-1 -itd ubuntu /bin/bash
+   67  docker run --name appA-Cont-2 -itd ubuntu /bin/bash
+   68  docker run --name appB-Cont-2 -itd ubuntu /bin/bash
+   69  docker run --name appB-Cont-1 -itd ubuntu /bin/bash
+   70  docker run --name appB-Cont-3 -itd ubuntu /bin/bash
+   71  docker ps 
+   72  history 
+   73  docker run --name appC-Cont-1 -itd ubuntu:16.04 /bin/bash
+   74  docker ps 
+   75  docker images 
+   76  docker rmi ubuntu
+   77  docker rmi ubuntu:16.04
+   78  history 
+   79  docker search ubuntu
+   80  docker search ubuntu:16.04
+   81  history 
+   82  docker ps -a 
+   83  docker kill $(docker ps -aq)
+   84  docker rm $(docker ps -aq)
+   85  docker ps 
+   86  docker ps -a
+   87  cat /etc/*-release
+   88  docker run -it centos 
+   89  docker ps 
+   90  docker inspect 981bbcde103f
+   91  curl localhost
+   92  ip addr 
+   93  curl 172.17.0.2
+   94  docker ps 
+   95  curl 172.17.0.2
+   96  docker kill 981bbcde103f
+   97  docker start 981bbcde103f
+   98  docker ps 
+   99  docker inspect 981bbcde103f 
+  100  curl 172.17.0.2
+  101  docker attach 981bbcde103f
+  102  curl 172.17.0.2
+  103  docker ps
+  104  docker kill 981bbcde103f
+  105  docker start 981bbcde103f
+  106  curl 172.17.0.2
+  107  docker commit -m "MyFirst Image" -p 981bbcde103f myfirtapache-image:v1
+  108  docker images 
+  109  docker run -itd myfirtapache-image:v1
+  110  curl 172.17.0.3
+  111  curl 172.17.0.4
+  112  docker run -itd myfirtapache-image:v1
+  113  curl 172.17.0.4
+  114  docker top 
+  115  ls
+  116  mkdir mydev/docker/apache -p 
+  117  cd mydev/docker/apache/
+  118  ls
+  119  vim Dockerfile
+  120  ls
+  121  docker build -t myubuntu-apache:v1 .
+  122  docker images
+  123  docker run -d myubuntu-apache:v1
+  124  docker ps 
+  125  docker inspect c66428248cb1
+  126  curl 172.17.0.5
+  127  cat Dockerfile 
+  128  ls
+  129  mv Dockerfile mydockerfile
+  130  ls
+  131  docker build -t myubuntu-apache:v1 -f mydockerfile .
+  132  cat mydockerfile 
+  133  ls
+  134  docker ps -aq
+  135  docker run -d myubuntu-apache:v1 -p 8080:80
+  136  docker run -d -p 8080:80 myubuntu-apache:v1 
+  137  docker ps 
+  138  curl localhost
+  139  curl localhost:8080
+  140  netstat -tulnp
+  141  iptables -L
+  142  docker run -d -p 8080:80 myubuntu-apache:v1 
+  143  docker run -d -p 8081:80 myubuntu-apache:v1 
+  144  netstat -tulnp
+  145  iptables -L
+  146  docker images
+  147  docker run -d -p 8082:80 myfirtapache-image:v1 
+  148  iptables -L
+  149  docker run -itd -p 8082:80 myfirtapache-image:v1 
+  150  iptables -L
+  151  netstat -tulnp
+  152  docker sp 
+  153  docker ps
+  154  ls
+  155  vi index.html
+  156  ls
+  157  vi mydockerfile 
+  158  docker build -t myubuntu-apache:v2 -f mydockerfile .
+  159  history | grep -i run 
+  160  docker run -d -p 8083:80 myubuntu-apache:v2
+  161  docker image 
+  162  docker images
+  163  docker tag myubuntu-apache:latest be18b63357bb
+  164  docker tag be18b63357bb myubuntu-apache:latest
+  165  docker images
+  166  cat mydockerfile 
+  167  docker images
+  168  docker ps 
+  169  docker run -d -P myubuntu-apache:v2
+  170  docker ps 
+  171  ls
+  172  vim mydockerfile 
+  173  docker build -t myubuntu-apache:v3 -f mydockerfile .
+  174  docker run -d -P myubuntu-apache:v3
+  175  docker ps 
+  176  vi mydockerfile 
+  177  docker build -t myubuntu-apache:v4 -f mydockerfile .
+  178  docker run -d -P myubuntu-apache:v4
+  179  docker ps 
+  180  cat mydockerfile 
+  181  docker ps 
+  182  cd /var/lib/docker
+  183  ls
+  184  cd containers/
+  185  ls
+  186  docker ps 
+  187  docker inspect bf21c0a2608c
+  188  ls
+  189  cd bf21c0a2608c8cb9ebd36c1018b05f8d10229039a0565cbf1ab3a1e62cdfca2f
+  190  ls
+  191  cat hostname 
+  192  cd ..
+  193  docker kill $(docker ps -aq)
+  194  docker rm $(docker ps -aq)
+  195  ls
+  196  docker container ls 
+  197  docker container ls -a 
+  198  docker volume ls 
+  199  docker run -it ubuntu:16.04 -v /var/www/amit /bin/bash
+  200  docker run -it  -v /var/www/amit ubuntu:16.04 /bin/bash
+  201  docker ps 
+  202  docker inspect 8af67d1ffcd4
+  203  cd ..
+  204  ls
+  205  cd volumes/
+  206  ls
+  207  cd c2aa95da6849f20849ab7e5fbb8c781deed5dd05f9666a4853f83c5b2e3f3a63/
+  208  ls
+  209  cd _data/
+  210  ls
+  211  cat now 
+  212  hostname
+  213  hostname >> now 
+  214  date
+  215  date >> now 
+  216  docker ps \
+  217  docker ps 
+  218  docker attach 8af67d1ffcd4
+  219  cd 
+  220  docker kill 8af67d1ffcd4
+  221  docker rm 8af67d1ffcd4
+  222  docker ps -a 
+  223  docker kill 4bbc18d37118 
+  224  docker rm 4bbc18d37118 
+  225  docker ps -a 
+  226  docker volume ls 
+  227  docker volume inspect c2aa95da6849f20849ab7e5fbb8c781deed5dd05f9666a4853f83c5b2e3f3a63
+  228  cd /var/lib/docker/volumes/c2aa95da6849f20849ab7e5fbb8c781deed5dd05f9666a4853f83c5b2e3f3a63/_data
+  229  ls
+  230  cat now 
+  231  cd 
+  232  history 
+  233  git clone https://github.com/amitvashisttech/docker-k8s-ericsson.git
+  234  ls
+  235  cd docker-k8s-ericsson/
+  236  ls
+  237  cp -rf ../mydev . 
+  238  ls
+  239  history > History_Docker_Day1.txt

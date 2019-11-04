@@ -1,0 +1,22 @@
+# Base Image.
+FROM ubuntu:16.04
+
+# Maintiner
+MAINTAINER Amit Vashist <amitvashist.tech@gmail.com>
+
+# Update the Apt-Repo.
+RUN apt-get update
+
+# Install Apache Packages
+RUN apt-get install apache2 -y
+
+# Copy custom Web Page
+COPY index.html /var/www/html/index.html 
+
+# Expose 80
+EXPOSE 80 
+EXPOSE 8080 
+
+
+# Bring the Service 
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
